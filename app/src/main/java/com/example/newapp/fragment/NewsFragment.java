@@ -88,7 +88,8 @@ public class NewsFragment extends BaseFragment {
                 String url = "http://192.168.31.32:8089/newsDetail?title=" + newsEntity.getAuthorName();
                 Bundle bundle = new Bundle();
                 bundle.putString("url", url);
-               // navigateToWithBundle(WebActivity.class, bundle);
+                //need to achieve the click event
+                navigateToWithBundle(WebActivity.class, bundle);
 
                 showToast("ddd");
             }
