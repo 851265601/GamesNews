@@ -89,7 +89,7 @@ public class NewsFragment extends BaseFragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("url", url);
                 //need to achieve the click event
-                navigateToWithBundle(WebActivity.class, bundle);
+                //navigateToWithBundle(WebActivity.class, bundle);
 
                 showToast("ddd");
             }

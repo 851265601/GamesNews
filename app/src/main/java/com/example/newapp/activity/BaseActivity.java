@@ -28,6 +28,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
     }
+    public String getStringFromSp(String Name) {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("sp_ttit", MODE_PRIVATE);
+        return sharedPreferences.getString(Name, "");
+    }
 
     public void ShowToast(String str) {
 

@@ -4,8 +4,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.newapp.activity.BaseActivity;
+import com.example.newapp.activity.HomeActivity;
 import com.example.newapp.activity.LoginActivity;
 import com.example.newapp.activity.RegisterActivity;
+import com.example.newapp.util.StringUtils;
 
 public class MainActivity extends BaseActivity {
     private Button btn_login;
@@ -24,6 +26,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+        if(!StringUtils.IsStringEmpty( getStringFromSp("token"))){
+            Navigate(HomeActivity.class);
+           finish();
+        }
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

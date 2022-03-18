@@ -17,10 +17,13 @@ import androidx.fragment.app.Fragment;
 
 import com.dueeeke.videoplayer.player.VideoViewManager;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public abstract class BaseFragment extends Fragment {
 
     protected View mRootView;
-
+        private Unbinder unbinder;
     protected abstract int initLayout();
 
     protected abstract void initView();
@@ -30,14 +33,21 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(mRootView==null){
-            mRootView=  inflater.inflate(initLayout(),container,false);
+        if (mRootView == null) {
+            mRootView = inflater.inflate(initLayout(), container, false);
             initView();
         }
-
+        //binding ButterKnife
+        unbinder = ButterKnife.bind(this, mRootView);
         return mRootView;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //unbinder ButterKnife
+        unbinder.unbind();
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

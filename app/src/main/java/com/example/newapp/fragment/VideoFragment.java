@@ -81,7 +81,7 @@ public class VideoFragment extends BaseFragment  implements OnItemChildClickList
             super.handleMessage(msg);
            switch (msg.what){
                case 0:
-                   videoAdapter.setDatas(list);
+                   videoAdapter.setDatas(datas);
                    videoAdapter.notifyDataSetChanged();
                    break;
 
@@ -199,11 +199,11 @@ public class VideoFragment extends BaseFragment  implements OnItemChildClickList
     }
 
     private void GetVideoList(final boolean isRefresh) {
-        String token = getStringFromSp("token");
+
         // List<VideoEntity> videoEntityList = new ArrayList<VideoEntity>();
-        if (!StringUtils.IsStringEmpty(token)) {
+
             HashMap<String, Object> hashMap = new HashMap<String, Object>();
-            hashMap.put("token", token);
+
             hashMap.put("page", pageNum);
             hashMap.put("limit", ApiConfig.PAGE_SIZE);
             hashMap.put("categoryId", categoryId);
@@ -254,10 +254,7 @@ public class VideoFragment extends BaseFragment  implements OnItemChildClickList
             });
 
 
-        } else {
-            Navigate(LoginActivity.class);
 
-        }
         // return videoEntityList;
 
     }

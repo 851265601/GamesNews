@@ -54,14 +54,22 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         //绑定 数据到viewholder中
-
+        /**
+         * commentnum : 103
+         * likenum : 121
+         * collectnum : 220
+         */
         ViewHolder vh = (ViewHolder) holder;
         VideoEntity videoEntity = mdatas.get(holder.getAdapterPosition());
         vh.tv_title.setText(videoEntity.getVtitle());
         vh.tv_author.setText(videoEntity.getAuthor());
-        // vh.tv_collect.setText(String.valueOf(videoEntity.().size()));
-       // vh.tv_comment.setText(String.valueOf(videoEntity.getVideoSocialEntity().getCommentnum()));
-      //  vh.tv_dz.setText(String.valueOf(videoEntity.getVideoSocialEntity().getLikenum()));
+        VideoEntity.VideoSocialEntity v=videoEntity.getVideoSocialEntity();
+        if (videoEntity.getVideoSocialEntity() != null) {
+            vh.tv_collect.setText(String.valueOf(videoEntity.getVideoSocialEntity().getCollectnum()));
+             vh.tv_comment.setText(String.valueOf(videoEntity.getVideoSocialEntity().getCommentnum()));
+             vh.tv_dz.setText(String.valueOf(videoEntity.getVideoSocialEntity().getLikenum()));
+        }
+
 
         //
         Picasso.with(mContext)
